@@ -1,0 +1,29 @@
+package allen.brett.checkbook;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class WriteFile {
+	private String path;
+	
+	public WriteFile(String path)
+	{
+		this.path = path;
+	}
+	
+	public void write(double balance) throws IOException
+	{
+		String bal = new Double(balance).toString();
+		
+		try
+		{
+			FileWriter fWriter = new FileWriter(path, false); //true will append; false will overwrite
+			fWriter.write(bal);
+			fWriter.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
